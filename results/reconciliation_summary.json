@@ -1,0 +1,250 @@
+{
+  "summary": {
+    "invoice_rows": 13,
+    "faculty_forms": 12,
+    "booking_requests": 4,
+    "schedule_rows": 2,
+    "auto_approve_ready": 3,
+    "exceptions": 12,
+    "open_booking_requests": 3
+  },
+  "auto_approved_ready": [
+    {
+      "invoice_id": "84903",
+      "form_id": "3303",
+      "student_id": "68103",
+      "user_id": "41023",
+      "class_id": "301",
+      "educator_id": "1115",
+      "classbatch_id": "9203",
+      "sessions_count": "24",
+      "preferred_days": "Wed,Fri",
+      "preferred_time": "16:30:00",
+      "decision": "AUTO_APPROVE_READY",
+      "note": "Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."
+    },
+    {
+      "invoice_id": "84907",
+      "form_id": "3307",
+      "student_id": "68107",
+      "user_id": "41027",
+      "class_id": "101",
+      "educator_id": "1125",
+      "classbatch_id": "9207",
+      "sessions_count": "24",
+      "preferred_days": "Mon,Thu",
+      "preferred_time": "15:30:00",
+      "decision": "AUTO_APPROVE_READY",
+      "note": "Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."
+    },
+    {
+      "invoice_id": "84908",
+      "form_id": "3308",
+      "student_id": "68108",
+      "user_id": "41028",
+      "class_id": "302",
+      "educator_id": "1115",
+      "classbatch_id": "9208",
+      "sessions_count": "24",
+      "preferred_days": "Sat,Sun",
+      "preferred_time": "09:30:00",
+      "decision": "AUTO_APPROVE_READY",
+      "note": "Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."
+    }
+  ],
+  "exceptions": [
+    {
+      "invoice_id": "84901",
+      "form_id": "3301",
+      "reason_code": "BOOKING_REQUEST_ALREADY_EXISTS",
+      "reason": "Booking request 5501 already exists; avoid duplicate creation.",
+      "owner": "Operations",
+      "next_action": "Idempotently update/continue existing request after checking its status."
+    },
+    {
+      "invoice_id": "84902",
+      "form_id": "3302",
+      "reason_code": "BOOKING_REQUEST_ALREADY_EXISTS",
+      "reason": "Booking request 5502 already exists; avoid duplicate creation.",
+      "owner": "Operations",
+      "next_action": "Idempotently update/continue existing request after checking its status."
+    },
+    {
+      "invoice_id": "84904",
+      "form_id": "3304",
+      "reason_code": "PARENT_CONTACT_MISMATCH",
+      "reason": "Form parent mobile differs from invoice mobile; masked data prevents reliable fuzzy matching.",
+      "owner": "Parent Support",
+      "next_action": "Confirm payer/guardian using verified contact channel; update canonical contact only after verification."
+    },
+    {
+      "invoice_id": "84905",
+      "form_id": "3305",
+      "reason_code": "BATCH_AT_CAPACITY",
+      "reason": "Current batch is already at maximum capacity.",
+      "owner": "Scheduling Ops",
+      "next_action": "Check approved capacity buffer or propose alternate batch; never overbook."
+    },
+    {
+      "invoice_id": "84908",
+      "form_id": "3309",
+      "reason_code": "DUPLICATE_FORM",
+      "reason": "Multiple faculty forms reference the same invoice; retain one canonical submission and audit duplicate.",
+      "owner": "Operations",
+      "next_action": "Deduplicate by invoice_id; do not create a second booking."
+    },
+    {
+      "invoice_id": "84909",
+      "form_id": "3310",
+      "reason_code": "PARTIAL_PAYMENT",
+      "reason": "Invoice status is Partially_Paid; only fully Paid renewals qualify for automatic approval.",
+      "owner": "Finance/Ops",
+      "next_action": "Confirm settlement with gateway; request balance payment if applicable."
+    },
+    {
+      "invoice_id": "84911",
+      "form_id": "3311",
+      "reason_code": "PAYMENT_FAILED",
+      "reason": "Invoice status is Failed; only fully Paid renewals qualify for automatic approval.",
+      "owner": "Finance/Ops",
+      "next_action": "Confirm settlement with gateway; request balance payment if applicable."
+    },
+    {
+      "invoice_id": "84912",
+      "form_id": "3312",
+      "reason_code": "BATCH_CHANGE_REQUEST",
+      "reason": "Parent/teacher selected a different batch or schedule.",
+      "owner": "Scheduling Ops",
+      "next_action": "Offer eligible batches and capacity; obtain parent confirmation before allocation."
+    },
+    {
+      "invoice_id": "84931",
+      "form_id": "3313",
+      "reason_code": "INVOICE_NOT_FOUND",
+      "reason": "Form references an invoice_id absent from invoices.",
+      "owner": "Operations + Teacher",
+      "next_action": "Teacher to correct invoice reference; Ops verify gateway record."
+    },
+    {
+      "invoice_id": "84906",
+      "form_id": "",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "reason": "Paid renewal invoice has no faculty renewal form.",
+      "owner": "Teacher + Operations",
+      "next_action": "Auto-remind teacher; after 12h escalate to faculty lead."
+    },
+    {
+      "invoice_id": "84910",
+      "form_id": "",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "reason": "Paid renewal invoice has no faculty renewal form.",
+      "owner": "Teacher + Operations",
+      "next_action": "Auto-remind teacher; after 12h escalate to faculty lead."
+    },
+    {
+      "invoice_id": "84913",
+      "form_id": "",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "reason": "Paid renewal invoice has no faculty renewal form.",
+      "owner": "Teacher + Operations",
+      "next_action": "Auto-remind teacher; after 12h escalate to faculty lead."
+    }
+  ],
+  "message_drafts": [
+    {
+      "invoice_id": "84901",
+      "audience": "ops",
+      "reason_code": "BOOKING_REQUEST_ALREADY_EXISTS",
+      "draft": "Hello, we are completing the renewal for invoice 84901. Our team needs to verify one detail (BOOKING_REQUEST_ALREADY_EXISTS) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84902",
+      "audience": "ops",
+      "reason_code": "BOOKING_REQUEST_ALREADY_EXISTS",
+      "draft": "Hello, we are completing the renewal for invoice 84902. Our team needs to verify one detail (BOOKING_REQUEST_ALREADY_EXISTS) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84904",
+      "audience": "parent",
+      "reason_code": "PARENT_CONTACT_MISMATCH",
+      "draft": "Hello, we are completing the renewal for invoice 84904. Our team needs to verify one detail (PARENT_CONTACT_MISMATCH) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84905",
+      "audience": "ops",
+      "reason_code": "BATCH_AT_CAPACITY",
+      "draft": "Hello, we are completing the renewal for invoice 84905. Our team needs to verify one detail (BATCH_AT_CAPACITY) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84908",
+      "audience": "ops",
+      "reason_code": "DUPLICATE_FORM",
+      "draft": "Hello, we are completing the renewal for invoice 84908. Our team needs to verify one detail (DUPLICATE_FORM) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84909",
+      "audience": "ops",
+      "reason_code": "PARTIAL_PAYMENT",
+      "draft": "Hello, we are completing the renewal for invoice 84909. Our team needs to verify one detail (PARTIAL_PAYMENT) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84911",
+      "audience": "ops",
+      "reason_code": "PAYMENT_FAILED",
+      "draft": "Hello, we are completing the renewal for invoice 84911. Our team needs to verify one detail (PAYMENT_FAILED) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84912",
+      "audience": "ops",
+      "reason_code": "BATCH_CHANGE_REQUEST",
+      "draft": "Hello, we are completing the renewal for invoice 84912. Our team needs to verify one detail (BATCH_CHANGE_REQUEST) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84931",
+      "audience": "teacher",
+      "reason_code": "INVOICE_NOT_FOUND",
+      "draft": "Hello, we are completing the renewal for invoice 84931. Our team needs to verify one detail (INVOICE_NOT_FOUND) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84906",
+      "audience": "teacher",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "draft": "Hello, we are completing the renewal for invoice 84906. Our team needs to verify one detail (PAID_INVOICE_NO_FORM) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84910",
+      "audience": "teacher",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "draft": "Hello, we are completing the renewal for invoice 84910. Our team needs to verify one detail (PAID_INVOICE_NO_FORM) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    },
+    {
+      "invoice_id": "84913",
+      "audience": "teacher",
+      "reason_code": "PAID_INVOICE_NO_FORM",
+      "draft": "Hello, we are completing the renewal for invoice 84913. Our team needs to verify one detail (PAID_INVOICE_NO_FORM) before confirming the next classes. Please reply to this message or contact Bambinos support. We will keep you updated."
+    }
+  ],
+  "booking_backlog": [
+    {
+      "booking_request_id": "5502",
+      "invoice_id": "84902",
+      "status": "Pending_Batch_Allocation",
+      "reason_code": "BOOKING_ALLOCATION_PENDING",
+      "owner": "Scheduling Ops"
+    },
+    {
+      "booking_request_id": "5505",
+      "invoice_id": "84905",
+      "status": "Failed_Batch_Full",
+      "reason_code": "BOOKING_ALLOCATION_PENDING",
+      "owner": "Scheduling Ops"
+    },
+    {
+      "booking_request_id": "5512",
+      "invoice_id": "84912",
+      "status": "Awaiting_Parent_Batch_Selection",
+      "reason_code": "BOOKING_ALLOCATION_PENDING",
+      "owner": "Scheduling Ops"
+    }
+  ]
+}

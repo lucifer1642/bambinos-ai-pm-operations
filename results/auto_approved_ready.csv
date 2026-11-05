@@ -1,0 +1,4 @@
+invoice_id,form_id,student_id,user_id,class_id,educator_id,classbatch_id,sessions_count,preferred_days,preferred_time,decision,note
+84903,3303,68103,41023,301,1115,9203,24,"Wed,Fri",16:30:00,AUTO_APPROVE_READY,"Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."
+84907,3307,68107,41027,101,1125,9207,24,"Mon,Thu",15:30:00,AUTO_APPROVE_READY,"Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."
+84908,3308,68108,41028,302,1115,9208,24,"Sat,Sun",09:30:00,AUTO_APPROVE_READY,"Payment, identity, amount, same-batch, schedule and capacity checks passed. Create booking request idempotently."

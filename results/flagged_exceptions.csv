@@ -1,0 +1,13 @@
+invoice_id,form_id,reason_code,reason,owner,next_action
+84901,3301,BOOKING_REQUEST_ALREADY_EXISTS,Booking request 5501 already exists; avoid duplicate creation.,Operations,Idempotently update/continue existing request after checking its status.
+84902,3302,BOOKING_REQUEST_ALREADY_EXISTS,Booking request 5502 already exists; avoid duplicate creation.,Operations,Idempotently update/continue existing request after checking its status.
+84904,3304,PARENT_CONTACT_MISMATCH,Form parent mobile differs from invoice mobile; masked data prevents reliable fuzzy matching.,Parent Support,Confirm payer/guardian using verified contact channel; update canonical contact only after verification.
+84905,3305,BATCH_AT_CAPACITY,Current batch is already at maximum capacity.,Scheduling Ops,Check approved capacity buffer or propose alternate batch; never overbook.
+84908,3309,DUPLICATE_FORM,Multiple faculty forms reference the same invoice; retain one canonical submission and audit duplicate.,Operations,Deduplicate by invoice_id; do not create a second booking.
+84909,3310,PARTIAL_PAYMENT,Invoice status is Partially_Paid; only fully Paid renewals qualify for automatic approval.,Finance/Ops,Confirm settlement with gateway; request balance payment if applicable.
+84911,3311,PAYMENT_FAILED,Invoice status is Failed; only fully Paid renewals qualify for automatic approval.,Finance/Ops,Confirm settlement with gateway; request balance payment if applicable.
+84912,3312,BATCH_CHANGE_REQUEST,Parent/teacher selected a different batch or schedule.,Scheduling Ops,Offer eligible batches and capacity; obtain parent confirmation before allocation.
+84931,3313,INVOICE_NOT_FOUND,Form references an invoice_id absent from invoices.,Operations + Teacher,Teacher to correct invoice reference; Ops verify gateway record.
+84906,,PAID_INVOICE_NO_FORM,Paid renewal invoice has no faculty renewal form.,Teacher + Operations,Auto-remind teacher; after 12h escalate to faculty lead.
+84910,,PAID_INVOICE_NO_FORM,Paid renewal invoice has no faculty renewal form.,Teacher + Operations,Auto-remind teacher; after 12h escalate to faculty lead.
+84913,,PAID_INVOICE_NO_FORM,Paid renewal invoice has no faculty renewal form.,Teacher + Operations,Auto-remind teacher; after 12h escalate to faculty lead.
